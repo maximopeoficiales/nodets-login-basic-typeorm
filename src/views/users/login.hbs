@@ -1,0 +1,24 @@
+<div class="card">
+    <h1>INiciar sesion</h1>
+    {{#if msg}}
+        <div class="alert alert-danger" role="alert">
+            <strong>{{msg}}</strong>
+        </div>
+    {{/if}}
+
+    <form action="/login" method="post">
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" class="form-control" name="email" id="" aria-describedby="helpId"
+                placeholder="Ingresa tu email" required>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="text" class="form-control" name="password" id="" aria-describedby="helpId"
+                placeholder="Ingresa tu contraseña" required>
+        </div>
+
+        <button type="submit" name="" id="" class="btn btn-primary btn-lg btn-block">Login</button>
+
+    </form>
+</div>

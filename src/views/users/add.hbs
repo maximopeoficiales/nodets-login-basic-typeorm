@@ -1,0 +1,25 @@
+<div class="col-md-4 mx-auto">
+     <div class="card">
+          <form action="/books/add" method="post">
+               <div class="card-body">
+                    <div class="form-group">
+                         <label for="">Title</label>
+                         <input type="text" name="title" autofocus="true" required id="" class="form-control"
+                              placeholder="Book Title">
+                    </div>
+                    <div class="form-group">
+                         <label for="">Author</label>
+                         <input type="text" name="author" required id="" class="form-control" placeholder="Book Author">
+                    </div>
+                    <div class="form-group">
+                         <label for="">ISBN</label>
+                         <input type="text" required name="isbn" class="form-control" placeholder="Book ISBN"
+                              pattern="(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">
+                         Save Book
+                    </button>
+               </div>
+          </form>
+     </div>
+</div>
