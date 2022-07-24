@@ -13,6 +13,18 @@ export const indexProducts = async (req: Request, res: Response) => {
 export const getLogin = async (req: Request, res: Response) => {
     res.render("users/login")
 };
+export const getProducts = async (req: Request, res: Response) => {
+    console.log(req.session);
+    res.render("users/login");
+};
+export const getLogout = async (req: Request, res: Response) => {
+    req.session.destroy((error) => {
+        if (error) {
+            throw error;
+        }
+        res.redirect("/");
+    });
+};
 export const postLogin = async (req: Request, res: Response) => {
     const userFind = await userRepository.findOneBy({
         email: req.body.email,
@@ -21,10 +33,10 @@ export const postLogin = async (req: Request, res: Response) => {
         // comporacion de la contraseña
         const match = await compare(req.body.password, userFind.password);
         if (match) {
+            (req.session as any).authenticated = true;
+            (req.session as any).user = userFind;
             //login
-            res.render("users/login", {
-                msg: "login success"
-            })
+            res.redirect("/products");
         } else {
             res.render("users/login", {
                 msg: "Credenciales incorrectas"

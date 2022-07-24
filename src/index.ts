@@ -2,6 +2,9 @@
 import express from "express";
 import exphbs from "express-handlebars";
 import path from "path";
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
+
 import indexRoutes from "./routes/index.route";
 //dir_name es la carpeta donde estoy
 
@@ -24,6 +27,15 @@ app.engine(
   })
 );
 app.set("view engine", ".hbs");
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(session({
+  secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+  saveUninitialized: true,
+  cookie: { maxAge: oneDay },
+  resave: false
+}));
+app.use(cookieParser());
+
 
 //Middlewares
 
